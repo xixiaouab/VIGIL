@@ -9,8 +9,8 @@
   --blue-200: #b8dcff;
   --blue-500: #2c7fd2;
   --blue-700: #185b9e;
-  --link: #0b66b3;
-  --link-hover: #084f8d;
+  --link: #0a5fa8;
+  --link-hover: #083f75;
   --green-500: #2b9c70;
   --amber-500: #bb7a25;
   --shadow: 0 24px 70px rgba(34, 93, 150, 0.12);
@@ -177,7 +177,7 @@ h1 span {
 }
 
 .authors {
-  max-width: 940px;
+  max-width: 900px;
   margin: 24px auto 0;
   color: #243047;
   line-height: 1.75;
@@ -193,12 +193,31 @@ h1 span {
   font-weight: 500;
 }
 
+.author-line {
+  display: block;
+}
+
+.author-line + .author-line {
+  margin-top: 1px;
+}
+
 .author-list a {
   color: var(--link);
+  text-decoration: underline;
+  text-decoration-color: rgba(10, 95, 168, 0.35);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition:
+    background 160ms ease-out,
+    color 160ms ease-out,
+    text-decoration-color 160ms ease-out;
 }
 
 .author-list a:hover {
   color: var(--link-hover);
+  background: var(--blue-50);
+  border-radius: 4px;
+  text-decoration-color: currentColor;
 }
 
 .author-list sup {
@@ -231,7 +250,7 @@ h1 span {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 0 17px;
+  padding: 0 18px;
   border: 1px solid var(--blue-200);
   border-radius: 999px;
   background: var(--blue-50);
@@ -256,11 +275,17 @@ h1 span {
 
 .button-disabled {
   cursor: not-allowed;
-  pointer-events: none;
   color: #6d7b8f;
   background: #f2f6fa;
   border-color: #dbe4ee;
   box-shadow: none;
+}
+
+.button-disabled:hover {
+  transform: none;
+  color: #5d6c81;
+  background: #eef4fa;
+  border-color: var(--blue-200);
 }
 
 .button-icon,
@@ -610,12 +635,19 @@ h3 {
 
   .button-row {
     margin-top: 18px;
-    gap: 8px;
+    gap: 8px 6px;
   }
 
   .button {
-    min-height: 42px;
-    padding: 0 14px;
-    font-size: 0.92rem;
+    min-height: 38px;
+    gap: 6px;
+    padding: 0 9px;
+    font-size: 0.8rem;
+  }
+
+  .button-icon,
+  .button-icon svg {
+    width: 13px;
+    height: 13px;
   }
 }
