@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Staying VIGILant</title>
+    <meta
+      name="description"
+      content="Project page for Staying VIGILant: Mitigating Visual Laziness via Counterfactual Visual Alignment in MLLMs."
+    />
+    <meta property="og:title" content="Staying VIGILant" />
+    <meta
+      property="og:description"
+      content="Mitigating visual laziness in multimodal large language models through counterfactual visual alignment."
+    />
+    <meta property="og:image" content="assets/images/teaser.webp" />
+    <meta name="theme-color" content="#dceeff" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="VIGIL home">
+          <span class="brand-mark">V</span>
+          <span>VIGIL</span>
+        </a>
+        <div class="nav-links">
+          <a href="#abstract">Abstract</a>
+          <a href="#method">Method</a>
+          <a href="#results">Results</a>
+          <a href="#citation">Citation</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-inner">
+          <p class="eyebrow">Counterfactual visual alignment for MLLMs</p>
+          <h1>
+            Staying <span>VIGIL</span>ant: Mitigating Visual Laziness via
+            Counterfactual Visual Alignment in MLLMs
+          </h1>
+          <p class="subtitle">
+            VIGIL teaches multimodal models to rely on visual evidence by
+            contrasting what they say when they can see with what they still
+            claim when made counterfactually blind.
+          </p>
+
+          <div class="authors" aria-label="Authors">
+            <p>
+              Xi Xiao<sup>1,*</sup>, Chen Liu<sup>2,*</sup>,
+              Chih-Ting Liao<sup>3</sup>, Yunbei Zhang<sup>4</sup>,
+              Qizhen Lan<sup>1</sup>, Yuxiang Wei<sup>5</sup>,
+              Lin Zhao<sup>6</sup>, Janet Wang<sup>4</sup>,
+              Jianyang Gu<sup>7</sup>, Muchao Ye<sup>8</sup>,
+              Tianyang Wang<sup>1,&dagger;</sup>, Hao Xu<sup>9,&dagger;</sup>
+            </p>
+            <p class="affiliations">
+              <sup>1</sup>UAB · <sup>2</sup>Yale · <sup>3</sup>UNSW ·
+              <sup>4</sup>Tulane · <sup>5</sup>Georgia Tech ·
+              <sup>6</sup>NEU · <sup>7</sup>OSU · <sup>8</sup>UIowa ·
+              <sup>9</sup>Harvard
+            </p>
+            <p class="notes">*Equal contribution. &dagger;Co-advising.</p>
+          </div>
+
+          <div class="button-row" aria-label="Project links">
+            <a class="button button-disabled" aria-disabled="true">Paper coming soon</a>
+            <a class="button button-disabled" aria-disabled="true">Code coming soon</a>
+            <a class="button" href="#citation">BibTeX</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="teaser-section" aria-labelledby="teaser-title">
+        <div class="container">
+          <figure class="teaser">
+            <img
+              src="assets/images/teaser.webp"
+              alt="Overview of VIGIL for mitigating visual laziness in multimodal large language models."
+            />
+            <figcaption id="teaser-title">
+              VIGIL aligns MLLMs by penalizing blind confidence: if the model
+              remains certain after visual evidence is masked, the answer is
+              likely driven by language priors rather than pixels.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="abstract" class="section">
+        <div class="container text-grid">
+          <div>
+            <p class="section-kicker">Abstract</p>
+            <h2>The model often sees the evidence, then answers from priors.</h2>
+          </div>
+          <div class="prose">
+            <p>
+              Multimodal large language models extend LLMs with visual
+              perception, yet they remain prone to hallucinations that contradict
+              the input image. A key failure mode is visual laziness: the model
+              may encode useful visual evidence internally while decoding from
+              strong language priors.
+            </p>
+            <p>
+              VIGIL is an offline post-training framework that aligns MLLMs by
+              maximizing Visual Information Gain. It constructs a matched
+              counterfactual blind state through attention masking, then
+              penalizes cases where the preferred response stays high-confidence
+              even without visual access. This seeing-versus-blind contrast
+              anchors high-confidence predictions to visual evidence rather than
+              linguistic shortcuts.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-soft">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-kicker">Three claims</p>
+            <h2>What VIGIL changes in multimodal alignment</h2>
+          </div>
+          <div class="claim-grid">
+            <article class="claim-card">
+              <span class="claim-index">01</span>
+              <h3>Visual laziness is a dependency failure.</h3>
+              <p>
+                Outcome-level preference losses can reward correct strings even
+                when the model reaches them through language priors instead of
+                visual evidence.
+              </p>
+            </article>
+            <article class="claim-card">
+              <span class="claim-index">02</span>
+              <h3>Blind confidence exposes ungrounded predictions.</h3>
+              <p>
+                VIGIL compares the same response under seeing and blind states,
+                making visual dependence directly observable during training.
+              </p>
+            </article>
+            <article class="claim-card">
+              <span class="claim-index">03</span>
+              <h3>Counterfactual alignment scales efficiently.</h3>
+              <p>
+                The visual anchor improves hallucination mitigation across model
+                scales and architectures while matching full-data baselines with
+                only 25% of preference data.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="method" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-kicker">Method</p>
+            <h2>Learning visual dependence from seeing and blind states</h2>
+          </div>
+
+          <div class="method-flow" aria-label="Method steps">
+            <article>
+              <h3>Seeing path</h3>
+              <p>
+                The model receives the full multimodal input and can attend from
+                text tokens to visual tokens.
+              </p>
+            </article>
+            <article>
+              <h3>Blind path</h3>
+              <p>
+                Attention masking blocks text-vision interaction while keeping
+                input tensors matched, creating a counterfactual blind state.
+              </p>
+            </article>
+            <article>
+              <h3>VIG alignment</h3>
+              <p>
+                The objective enlarges the log-likelihood gap between seeing and
+                blind states and suppresses high-confidence blind responses.
+              </p>
+            </article>
+          </div>
+
+          <figure class="wide-figure">
+            <img
+              src="assets/images/method.webp"
+              alt="VIGIL method diagram showing dual-path forward pass, visual information gain, and dynamic gating."
+            />
+            <figcaption>
+              VIGIL combines the standard DPO objective with a Counterfactual
+              Visual Decoupling constraint, gated by the seeing-blind gap.
+            </figcaption>
+          </figure>
+
+          <div class="equation-panel">
+            <p class="equation-label">Visual Information Gain</p>
+            <p class="equation">
+              VIG(y) = log p(y | image, text) - log p(y | blind, text)
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="results" class="section section-soft">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-kicker">Results</p>
+            <h2>Stronger grounding with less post-training data</h2>
+          </div>
+
+          <div class="metric-grid">
+            <article class="metric-card">
+              <strong>+4.1</strong>
+              <span>POPE Adv gain on Qwen2.5-VL-7B</span>
+            </article>
+            <article class="metric-card">
+              <strong>+5.3</strong>
+              <span>POPE Adv gain on Qwen2.5-VL-72B</span>
+            </article>
+            <article class="metric-card">
+              <strong>25%</strong>
+              <span>Preference data needed to match full-data DA-DPO</span>
+            </article>
+            <article class="metric-card">
+              <strong>+4.3</strong>
+              <span>Zero-shot RefCOCOg Acc@0.5 improvement</span>
+            </article>
+          </div>
+
+          <div class="figure-grid">
+            <figure class="wide-figure">
+              <img
+                src="assets/images/results-ablation.webp"
+                alt="VIGIL data efficiency and hyperparameter analysis figure."
+              />
+              <figcaption>
+                VIGIL matches strong full-data baselines with 25% of the
+                post-training data and remains stable across KL and grounding
+                weights.
+              </figcaption>
+            </figure>
+            <figure class="wide-figure">
+              <img
+                src="assets/images/case-study.webp"
+                alt="Qualitative examples comparing DPO and VIGIL on perception, counting, and causal reasoning."
+              />
+              <figcaption>
+                Qualitative examples show VIGIL reducing prior-driven guesses in
+                fine-grained perception, counting, and physical-state reasoning.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container split-panel">
+          <div>
+            <p class="section-kicker">Why it matters</p>
+            <h2>Alignment should constrain the dependency path, not only the answer.</h2>
+          </div>
+          <div class="prose">
+            <p>
+              Standard multimodal preference optimization can improve final
+              answers while leaving visual dependence under-specified. VIGIL
+              instead asks whether the same answer remains plausible when visual
+              evidence is causally removed.
+            </p>
+            <p>
+              This turns visual grounding into a measurable training signal:
+              high confidence is rewarded only when the model actually needs the
+              image to sustain that confidence.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="citation" class="section section-soft">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-kicker">Citation</p>
+            <h2>Cite VIGIL</h2>
+          </div>
+          <div class="bibtex-card">
+            <button class="copy-button" type="button" data-copy-bib>
+              Copy BibTeX
+            </button>
+            <pre><code id="bibtex">@misc{xiao2026vigil,
+  title        = {Staying VIGILant: Mitigating Visual Laziness via Counterfactual Visual Alignment in MLLMs},
+  author       = {Xiao, Xi and Liu, Chen and Liao, Chih-Ting and Zhang, Yunbei and Lan, Qizhen and Wei, Yuxiang and Zhao, Lin and Wang, Janet and Gu, Jianyang and Ye, Muchao and Wang, Tianyang and Xu, Hao},
+  year         = {2026},
+  note         = {Project page: https://xixiaouab.github.io/VIGIL/}
+}</code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>VIGIL project page.</p>
+        <a href="#top">Back to top</a>
+      </div>
+    </footer>
+
+    <script src="assets/site.js"></script>
+  </body>
+</html>
