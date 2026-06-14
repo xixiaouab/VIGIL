@@ -68,64 +68,6 @@ img {
   margin: 0 auto;
 }
 
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  border-bottom: 1px solid rgba(215, 232, 251, 0.85);
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(16px);
-}
-
-.nav {
-  width: min(var(--maxw), calc(100% - 36px));
-  min-height: 64px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--ink);
-  font-weight: 800;
-}
-
-.brand:hover {
-  color: var(--ink);
-  text-decoration: none;
-}
-
-.brand-mark {
-  width: 32px;
-  height: 32px;
-  display: inline-grid;
-  place-items: center;
-  border: 1px solid var(--blue-200);
-  border-radius: 8px;
-  background: var(--blue-100);
-  color: var(--blue-700);
-  font-weight: 900;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  color: var(--muted);
-  font-size: 0.94rem;
-  font-weight: 650;
-}
-
-.nav-links a:hover {
-  color: var(--blue-700);
-  text-decoration: none;
-}
-
 .hero {
   padding: 62px 0 20px;
 }
@@ -230,6 +172,10 @@ h1 span {
   color: var(--muted);
   font-size: 0.86rem;
   line-height: 1.72;
+}
+
+.affiliations {
+  margin-top: 12px !important;
 }
 
 .notes {
@@ -551,20 +497,6 @@ h3 {
 }
 
 @media (max-width: 860px) {
-  .nav {
-    min-height: 58px;
-    padding: 10px 0;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .nav-links {
-    justify-content: flex-end;
-    gap: 14px;
-    overflow-x: auto;
-    font-size: 0.88rem;
-  }
-
   .hero {
     padding-top: 48px;
   }
@@ -588,8 +520,7 @@ h3 {
 
 @media (max-width: 520px) {
   .container,
-  .hero-inner,
-  .nav {
+  .hero-inner {
     width: min(100% - 24px, 1120px);
   }
 
@@ -601,24 +532,6 @@ h3 {
   .method-flow article,
   .metric-card {
     padding: 18px;
-  }
-
-  .brand {
-    gap: 8px;
-  }
-
-  .brand-mark {
-    width: 30px;
-    height: 30px;
-  }
-
-  .nav {
-    gap: 10px;
-  }
-
-  .nav-links {
-    gap: 10px;
-    font-size: 0.82rem;
   }
 
   .hero {
