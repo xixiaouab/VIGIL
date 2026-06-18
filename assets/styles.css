@@ -118,6 +118,28 @@ h1 span {
   text-wrap: balance;
 }
 
+.venue-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px auto 0;
+  padding: 4px 12px;
+  border: 1px solid var(--blue-200);
+  border-radius: 999px;
+  background: var(--blue-50);
+  color: var(--blue-700);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.4;
+  text-transform: uppercase;
+  box-shadow: 0 8px 24px rgba(44, 127, 210, 0.08);
+}
+
+.venue-badge + .authors {
+  margin-top: 18px;
+}
+
 .authors {
   max-width: 900px;
   margin: 24px auto 0;
@@ -559,6 +581,12 @@ h3 {
 
   .subtitle {
     margin-top: 16px;
+  }
+
+  .venue-badge {
+    margin-top: 14px;
+    padding: 3px 10px;
+    font-size: 0.78rem;
   }
 
   .authors {
