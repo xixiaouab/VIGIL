@@ -277,6 +277,10 @@ h1 span {
   margin: 0;
 }
 
+.teaser + .teaser {
+  margin-top: 24px;
+}
+
 .teaser {
   border: 1px solid var(--line);
   border-radius: var(--radius);
