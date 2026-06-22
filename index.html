@@ -130,17 +130,6 @@
               alt="Demo of visual laziness in multimodal large language models."
             />
           </figure>
-          <figure class="teaser">
-            <img
-              src="assets/images/teaser.webp?v=8c4f2b1"
-              alt="Overview of VIGIL for mitigating visual laziness in multimodal large language models."
-            />
-            <figcaption id="teaser-title">
-              VIGIL aligns MLLMs by penalizing blind confidence: if the model
-              remains certain after visual evidence is masked, the answer is
-              likely driven by language priors rather than pixels.
-            </figcaption>
-          </figure>
         </div>
       </section>
 
@@ -168,6 +157,28 @@
               linguistic shortcuts.
             </p>
           </div>
+        </div>
+      </section>
+
+      <section class="teaser-section" aria-labelledby="teaser-title">
+        <div class="container">
+          <figure class="teaser">
+            <img
+              src="assets/images/teaser.webp?v=8c4f2b1"
+              alt="Overview of VIGIL for mitigating visual laziness in multimodal large language models."
+            />
+            <figcaption id="teaser-title">
+                Overview of VIGIL for visually grounded MLLMs.
+                (a) A longstanding limitation of MLLMs is visual laziness, namely the heavy reliance on
+                textual knowledge priors over visual evidence that can lead to hallucination. As a remedy,
+                we introduce VIGIL, a post-training RL framework that promotes dependence on visual evidence.
+                (b) Rather than altering text-based rewards, VIGIL penalizes insufficient reliance on
+                visual information.
+                (c) Qwen2.5-VL trained with VIGIL rapidly learns to leverage visual inputs during generation.
+                (d) VIGIL consistently improves hallucination mitigation and multimodal reasoning across model scales,
+                architectures, and benchmarks.
+            </figcaption>
+          </figure>
         </div>
       </section>
 
@@ -283,6 +294,28 @@
               <strong>+4.3</strong>
               <span>Zero-shot RefCOCOg Acc@0.5 improvement</span>
             </article>
+          </div>
+
+          <div class="figure-grid">
+            <figure class="wide-figure">
+                <figcaption>
+                    Main Results across Model Scales.
+                  </figcaption>
+                  <img
+                src="assets/images/results-model_scale.webp?v=8c4f2b1"
+              />
+            </figure>
+          </div>
+
+          <div class="figure-grid">
+            <figure class="wide-figure">
+                <figcaption>
+                    Generalization across base model architectures.
+                  </figcaption>
+                  <img
+                src="assets/images/results-model_backbone.webp?v=8c4f2b1"
+              />
+            </figure>
           </div>
 
           <div class="figure-grid">
