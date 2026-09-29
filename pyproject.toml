@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vigil-alignment"
+version = "0.1.0"
+description = "Counterfactual visual alignment for multimodal language models"
+requires-python = ">=3.10"
+dependencies = [
+  "torch>=2.6,<2.7", "torchvision>=0.21,<0.22", "transformers==4.57.1",
+  "accelerate>=1.10,<2", "pillow>=10", "numpy>=1.26", "pyyaml>=6",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+deepspeed = ["deepspeed>=0.16,<0.19"]
+judge = ["openai>=1.0,<3"]
+internvl = ["timm>=1.0,<2", "einops>=0.8,<1", "sentencepiece>=0.2,<1"]
+
+[tool.setuptools.packages.find]
+include = ["vigil*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

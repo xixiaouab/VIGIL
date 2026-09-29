@@ -1,0 +1,25 @@
+{
+  "model": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+  "data": "data/train.jsonl",
+  "reference_cache": "data/reference.jsonl",
+  "image_root": "data/images",
+  "output_dir": "outputs/llava_onevision_7b",
+  "max_length": 4096,
+  "dtype": "bfloat16",
+  "micro_batch_size": 1,
+  "global_batch_size": 1024,
+  "beta": 0.1,
+  "grounding_weight": 1.0,
+  "gate_reduction": "batch",
+  "detach_gate": false,
+  "seed": 42,
+  "fsdp": {
+    "transformer_layer_cls_to_wrap": [
+      "Qwen2DecoderLayer"
+    ],
+    "use_orig_params": true,
+    "sync_module_states": true,
+    "limit_all_gathers": true,
+    "forward_prefetch": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "model": "OpenGVLab/InternVL2_5-26B",
+  "data": "data/train.jsonl",
+  "reference_cache": "data/reference.jsonl",
+  "image_root": "data/images",
+  "output_dir": "outputs/internvl2_5_26b",
+  "max_length": 4096,
+  "dtype": "bfloat16",
+  "micro_batch_size": 1,
+  "global_batch_size": 1024,
+  "beta": 0.1,
+  "grounding_weight": 1.0,
+  "gate_reduction": "batch",
+  "detach_gate": false,
+  "seed": 42,
+  "trust_remote_code": true,
+  "attn_implementation": "eager",
+  "deepspeed": "configs/zero3.json"
+}

@@ -1,0 +1,25 @@
+{
+  "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+  "data": "data/train.jsonl",
+  "reference_cache": "data/reference.jsonl",
+  "image_root": "data/images",
+  "output_dir": "outputs/qwen2_5_vl_7b",
+  "max_length": 4096,
+  "dtype": "bfloat16",
+  "micro_batch_size": 1,
+  "global_batch_size": 1024,
+  "beta": 0.1,
+  "grounding_weight": 1.0,
+  "gate_reduction": "batch",
+  "detach_gate": false,
+  "seed": 42,
+  "fsdp": {
+    "transformer_layer_cls_to_wrap": [
+      "Qwen2_5_VLDecoderLayer"
+    ],
+    "use_orig_params": true,
+    "sync_module_states": true,
+    "limit_all_gathers": true,
+    "forward_prefetch": false
+  }
+}
