@@ -23,7 +23,9 @@ This is the official implementation of the ECCV 2026 paper
 
 **You are encouraged to read the illustrated walkthrough of the paper on the [project website](https://xixiaouab.github.io/VIGIL/).**
 
-<img src="assets/images/teaser.webpg" width="800">
+<p align="center">
+<img src="assets/images/teaser.webp" width="800">
+</p>
 
 
 ## Install
