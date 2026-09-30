@@ -232,3 +232,14 @@ hf download OpenGVLab/InternVL2_5-26B \
 touch /tmp/vigil-internvl-source/__init__.py
 VIGIL_INTERNVL_SOURCE=/tmp/vigil-internvl-source pytest -q
 ```
+
+## Citation
+```bibtex
+@inproceedings{xiao2026vigil,
+  title={Staying VIGILant: Mitigating Visual Laziness via Counterfactual Visual Alignment in MLLMs},
+  author={Xiao, Xi and Liu, Chen and Liao, Chih-Ting and Zhang, Yunbei and Lan, Qizhen and Wei, Yuxiang and Zhao, Lin and Wang, Janet and Gu, Jianyang and Ye, Muchao and Wang, Tianyang and Xu, Hao},
+  booktitle={European Conference on Computer Vision},
+  year={2026},
+  organization={Springer}
+}
+```
