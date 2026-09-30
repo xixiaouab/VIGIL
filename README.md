@@ -5,7 +5,7 @@
   [![arXiv](https://img.shields.io/badge/arXiv-VIGIL-firebrick)](https://arxiv.org/abs/2606.26387)
   [![PDF](https://img.shields.io/badge/PDF-DADBDD)](https://arxiv.org/pdf/2606.26387)
   [![Project_Page](https://img.shields.io/badge/Project_Page-B9DEF1)](https://xixiaouab.github.io/VIGIL/)
-  [![OpenReview](https://img.shields.io/badge/OpenReview-eeeeee)](https://openreview.net/forum?id=pd6A7jB5D6)
+  [![OpenReview](https://img.shields.io/badge/OpenReview-eeeeee)](https://openreview.net/forum?id=p9Zb9F0V71)
   [![ECCV 2026](https://img.shields.io/badge/ECCV_2026-blue)](https://eccv.ecva.net/virtual/2026/poster/4110)
   [![Springer](https://img.shields.io/badge/Springer-white)](https://link.springer.com/chapter/10.1007/978-3-032-37232-1_16)
   [![GitHub Stars](https://img.shields.io/github/stars/xixiaouab/VIGIL.svg?style=social\&label=Stars)](https://github.com/xixiaouab/VIGIL)
