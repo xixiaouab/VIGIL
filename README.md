@@ -19,7 +19,7 @@
 </div>
 
 This is the official implementation of the ECCV 2026 paper
-<br>[Staying VIGILant: Mitigating Visual Laziness via Counterfactual Visual Alignment in MLLMs](https://arxiv.org/pdf/2602.00217).
+<br>[Staying VIGILant: Mitigating Visual Laziness via Counterfactual Visual Alignment in MLLMs](https://arxiv.org/pdf/2606.26387).
 
 **You are encouraged to read the illustrated walkthrough of the paper on the [project website](https://xixiaouab.github.io/VIGIL/).**
 
